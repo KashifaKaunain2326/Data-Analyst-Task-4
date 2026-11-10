@@ -1,0 +1,79 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample Sales Dataset
+data = {
+    "Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    "Sales": [12000, 15000, 18000, 14000, 22000, 25000],
+    "Profit": [3000, 4000, 5000, 3500, 6000, 7000],
+    "Orders": [120, 150, 180, 140, 220, 250]
+}
+
+df = pd.DataFrame(data)
+
+# Display Dataset
+print("SALES DATA ANALYSIS")
+print(df)
+
+# Calculate KPIs
+total_sales = df["Sales"].sum()
+total_profit = df["Profit"].sum()
+total_orders = df["Orders"].sum()
+
+print("\nDASHBOARD KPIs")
+print("Total Sales:", total_sales)
+print("Total Profit:", total_profit)
+print("Total Orders:", total_orders)
+
+# 1. Monthly Sales
+plt.figure(figsize=(8, 4))
+plt.plot(df["Month"], df["Sales"], marker="o")
+plt.title("Monthly Sales Trend")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid()
+plt.show()
+
+# 2. Monthly Profit
+plt.figure(figsize=(8, 4))
+plt.bar(df["Month"], df["Profit"])
+plt.title("Monthly Profit Analysis")
+plt.xlabel("Month")
+plt.ylabel("Profit")
+plt.show()
+
+# 3. Monthly Orders
+plt.figure(figsize=(8, 4))
+plt.bar(df["Month"], df["Orders"])
+plt.title("Monthly Orders")
+plt.xlabel("Month")
+plt.ylabel("Orders")
+plt.show()
+
+# 4. Sales Distribution
+plt.figure(figsize=(6, 6))
+plt.pie(df["Sales"], labels=df["Month"],
+        autopct="%1.1f%%")
+plt.title("Sales Distribution")
+plt.show()
+
+# 5. Sales vs Profit
+plt.figure(figsize=(8, 4))
+plt.plot(df["Month"], df["Sales"],
+         marker="o", label="Sales")
+plt.plot(df["Month"], df["Profit"],
+         marker="s", label="Profit")
+plt.title("Sales vs Profit")
+plt.legend()
+plt.grid()
+plt.show()
+
+# 6. Profit Comparison
+plt.figure(figsize=(8, 4))
+plt.bar(df["Month"], df["Profit"])
+plt.title("Profit Comparison")
+plt.xlabel("Month")
+plt.ylabel("Profit")
+plt.show()
+
+print("\nDashboard Analysis Completed!")
